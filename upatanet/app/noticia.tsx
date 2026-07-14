@@ -9,19 +9,21 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import { Colors } from "@/constants/theme";
+
+const C = Colors.light;
 
 export default function NoticiaScreen() {
   const router = useRouter();
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* HEADER */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()}>
-          <Ionicons name="close" size={28} color="#333" />
+          <Ionicons name="close" size={28} color={C.text} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Catalina Flores</Text>
-        <View style={{ width: 28 }} /> {/* Spacer to center title */}
+        <View style={styles.headerSpacer} />
       </View>
 
       <ScrollView contentContainerStyle={styles.content}>
@@ -32,14 +34,13 @@ export default function NoticiaScreen() {
             paludismo en la comuidad de Upata bro, qué más te puedo decir, ah
           </Text>
 
-          {/* LIKES / DISLIKES */}
           <View style={styles.interactionRow}>
             <TouchableOpacity style={styles.reactionBtn}>
-              <Ionicons name="thumbs-up-outline" size={24} color="#CC4B37" />
+              <Ionicons name="thumbs-up-outline" size={24} color={C.primary} />
               <Text style={styles.reactionText}>15</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.reactionBtn}>
-              <Ionicons name="thumbs-down-outline" size={24} color="#CC4B37" />
+              <Ionicons name="thumbs-down-outline" size={24} color={C.primary} />
               <Text style={styles.reactionText}>01</Text>
             </TouchableOpacity>
           </View>
@@ -52,7 +53,7 @@ export default function NoticiaScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F3EBE1",
+    backgroundColor: C.background,
   },
   header: {
     flexDirection: "row",
@@ -61,31 +62,35 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 10,
     paddingBottom: 20,
+    backgroundColor: C.surfaceTop,
   },
   headerTitle: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#333",
+    color: C.text,
+  },
+  headerSpacer: {
+    width: 28,
   },
   content: {
     paddingHorizontal: 20,
   },
   detailCard: {
-    backgroundColor: "#FAF5EE",
+    backgroundColor: C.surfaceAlt,
     borderRadius: 16,
     padding: 20,
     borderWidth: 1,
-    borderColor: "#E6DFD5",
+    borderColor: C.chipBg,
   },
   title: {
     fontSize: 22,
     fontWeight: "bold",
-    color: "#CC4B37",
+    color: C.primary,
     marginBottom: 16,
   },
   bodyText: {
     fontSize: 15,
-    color: "#333",
+    color: C.text,
     lineHeight: 22,
     marginBottom: 30,
   },
@@ -101,6 +106,6 @@ const styles = StyleSheet.create({
   reactionText: {
     fontSize: 16,
     fontWeight: "600",
-    color: "#CC4B37",
+    color: C.primary,
   },
 });

@@ -6,20 +6,19 @@ import {
   Animated,
   SafeAreaView,
   TouchableOpacity,
+  Platform,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import NewsCard from "@/components/newsCard";
+import { Colors } from "@/constants/theme";
 
-// Make sure you have created the NewsCard component in your components folder
-// as structured in the previous step!
-import NewsCard from "@/components/NewsCard";
-
+const C = Colors.light;
 const BOTTOM_BAR_HEIGHT = 80;
 
 export default function HomeScreen() {
   const router = useRouter();
 
-  // Scroll Animation Logic
   const scrollY = useRef(new Animated.Value(0)).current;
   const diffClamp = Animated.diffClamp(scrollY, 0, BOTTOM_BAR_HEIGHT);
   const translateY = diffClamp.interpolate({
@@ -27,17 +26,15 @@ export default function HomeScreen() {
     outputRange: [0, BOTTOM_BAR_HEIGHT],
   });
 
-  // Mock data for the news feed
   const newsData = [
     {
       id: "1",
       title: "Ola de paludismo en Hasupuwei",
-      snippet:
-        "Han aumentado considerablemente los contagios y afectados por el pal...",
+      snippet: "Han aumentado considerablemente los contagios y afectados por el pal...",
       date: "17/03/26",
       category: "Salud",
       icon: "water",
-      color: "#CC4B37",
+      color: C.categorySalud,
     },
     {
       id: "2",
@@ -46,54 +43,53 @@ export default function HomeScreen() {
       date: "21/05/26",
       category: "Insum.",
       icon: "cube",
-      color: "#2C5E8A",
+      color: C.categoryInsumos,
     },
     {
       id: "3",
       title: "Tala de árboles cerca de Comun...",
-      snippet:
-        "Han aumentado considerablemente los contagios y afectados por el pal...",
+      snippet: "Han aumentado considerablemente los contagios y afectados por el pal...",
       date: "17/03/26",
       category: "Natur.",
       icon: "leaf",
-      color: "#4A7C59",
+      color: C.categoryNaturaleza,
     },
     {
       id: "4",
       title: "Se esperan fuertes lluvias estos días",
-      snippet:
-        "Han aumentado considerablemente los contagios y afectados por el pal...",
+      snippet: "Han aumentado considerablemente los contagios y afectados por el pal...",
       date: "17/03/26",
       category: "Clima",
       icon: "rainy",
-      color: "#D98236",
+      color: C.categoryAlertas,
     },
   ];
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* HEADER */}
       <View style={styles.header}>
         <View style={styles.logoContainer}>
-          <Ionicons name="finger-print" size={32} color="#CC4B37" />
+          <Ionicons name="finger-print" size={32} color={C.primary} />
           <Text style={styles.headerTitle}>Upatanet</Text>
         </View>
         <View style={styles.headerActions}>
-          <TouchableOpacity style={styles.iconButton}>
-            <Ionicons name="arrow-up" size={20} color="#FFF" />
+          <TouchableOpacity
+            style={styles.iconButton}
+            onPress={() => router.push("/publicar")}
+          >
+            <Ionicons name="arrow-up" size={20} color={C.textInverse} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconButton}>
-            <Ionicons name="pencil" size={20} color="#FFF" />
+            <Ionicons name="pencil" size={20} color={C.textInverse} />
           </TouchableOpacity>
         </View>
       </View>
 
-      {/* SCROLL VIEW (Animated) */}
       <Animated.ScrollView
         contentContainerStyle={styles.scrollContent}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-          { useNativeDriver: true },
+          { useNativeDriver: Platform.OS !== "web" },
         )}
         scrollEventThrottle={16}
       >
@@ -104,27 +100,42 @@ export default function HomeScreen() {
             snippet={item.snippet}
             date={item.date}
             category={item.category}
-            categoryIcon={item.icon as any}
+            categoryIcon={item.icon as keyof typeof Ionicons.glyphMap}
             titleColor={item.color}
-            onPress={() => router.push(`/noticia`)}
+            onPress={() => router.push("/noticia")}
           />
         ))}
       </Animated.ScrollView>
 
-      {/* BOTTOM NAV BAR (Animated to hide on scroll) */}
       <Animated.View
         style={[styles.bottomBar, { transform: [{ translateY }] }]}
       >
-        <TouchableOpacity style={styles.tabItem}>
-          <Ionicons name="home" size={24} color="#CC4B37" />
-          <Text style={[styles.tabText, { color: "#CC4B37" }]}>Noticias</Text>
+        <TouchableOpacity
+          style={styles.tabItem}
+          onPress={() => router.push("/(tabs)")}
+        >
+          <Ionicons name="home" size={24} color={C.primary} />
+          <Text style={[styles.tabText, { color: C.primary }]}>Noticias</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}>
-          <Ionicons name="map-outline" size={24} color="#888" />
+        <TouchableOpacity
+          style={styles.tabItem}
+          onPress={() => router.push("/(tabs)/mapa")}
+        >
+          <Ionicons name="map-outline" size={24} color={C.placeholderText} />
           <Text style={styles.tabText}>Mapa</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}>
-          <Ionicons name="settings-outline" size={24} color="#888" />
+        <TouchableOpacity
+          style={styles.tabItem}
+          onPress={() => router.push("/(tabs)/mensajes")}
+        >
+          <Ionicons name="chatbubble-outline" size={24} color={C.placeholderText} />
+          <Text style={styles.tabText}>Mensajes</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.tabItem}
+          onPress={() => router.push("/(tabs)/configuracion")}
+        >
+          <Ionicons name="settings-outline" size={24} color={C.placeholderText} />
           <Text style={styles.tabText}>Configuración</Text>
         </TouchableOpacity>
       </Animated.View>
@@ -133,10 +144,7 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#F3EBE1",
-  },
+  container: { flex: 1, backgroundColor: C.background },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -145,22 +153,11 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 20,
   },
-  logoContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 10,
-  },
-  headerTitle: {
-    fontSize: 22,
-    fontWeight: "bold",
-    color: "#333",
-  },
-  headerActions: {
-    flexDirection: "row",
-    gap: 10,
-  },
+  logoContainer: { flexDirection: "row", alignItems: "center", gap: 10 },
+  headerTitle: { fontSize: 22, fontWeight: "bold", color: C.text },
+  headerActions: { flexDirection: "row", gap: 10 },
   iconButton: {
-    backgroundColor: "#CC4B37",
+    backgroundColor: C.primary,
     padding: 8,
     borderRadius: 20,
   },
@@ -174,20 +171,14 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: BOTTOM_BAR_HEIGHT,
-    backgroundColor: "#F3EBE1",
+    backgroundColor: C.background,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
     borderTopWidth: 1,
-    borderTopColor: "#E6DFD5",
-    paddingBottom: 20, // adjust for iOS safe area if needed
+    borderTopColor: C.chipBg,
+    paddingBottom: 20,
   },
-  tabItem: {
-    alignItems: "center",
-  },
-  tabText: {
-    fontSize: 12,
-    marginTop: 4,
-    color: "#888",
-  },
+  tabItem: { alignItems: "center" },
+  tabText: { fontSize: 12, marginTop: 4, color: C.placeholderText },
 });

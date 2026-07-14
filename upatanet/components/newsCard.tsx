@@ -1,6 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { Colors } from "@/constants/theme";
+
+const C = Colors.light;
 
 interface NewsCardProps {
   title: string;
@@ -43,12 +46,12 @@ export default function NewsCard({
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "#FAF5EE",
+    backgroundColor: C.surfaceAlt,
     borderRadius: 16,
     padding: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: "#E6DFD5",
+    borderColor: C.chipBg,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
@@ -62,7 +65,7 @@ const styles = StyleSheet.create({
   },
   snippet: {
     fontSize: 14,
-    color: "#4A4A4A",
+    color: C.text,
     marginBottom: 16,
     lineHeight: 20,
   },
@@ -73,7 +76,7 @@ const styles = StyleSheet.create({
   },
   date: {
     fontSize: 12,
-    color: "#A09990",
+    color: C.placeholderText,
   },
   categoryContainer: {
     flexDirection: "row",
