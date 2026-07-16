@@ -1,41 +1,61 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
-
 import { Platform } from 'react-native';
-
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    background: '#F2ECE0',
+    surfaceTop: '#F6F0E3',
+    surfaceAlt: '#FCFCFF',
+    primary: '#C43B26',
+    primaryDark: '#E3361C',
+    chipBg: '#DFDAD0',
+    chipBgActive: '#C5AB92',
+    text: '#1C1C1E',
+    textInverse: '#F2ECE0',
+    modalBg: '#1C1C1E',
+    modalButtonGray: '#3A3A3C',
+    success: '#3E9558',
+    categorySalud: '#C43B26',
+    categoryInsumos: '#1D4E89',
+    categoryNaturaleza: '#3B6E4A',
+    categoryAlertas: '#E8A13C',
+    borderSubtle: '#A58B70',
+    placeholderText: '#8A8378',
+    tint: '#C43B26',
+    icon: '#8A8378',
+    tabIconDefault: '#8A8378',
+    tabIconSelected: '#C43B26',
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+    background: '#F2ECE0',
+    surfaceTop: '#F6F0E3',
+    surfaceAlt: '#FCFCFF',
+    primary: '#C43B26',
+    primaryDark: '#E3361C',
+    chipBg: '#DFDAD0',
+    chipBgActive: '#C5AB92',
+    text: '#1C1C1E',
+    textInverse: '#F2ECE0',
+    modalBg: '#1C1C1E',
+    modalButtonGray: '#3A3A3C',
+    success: '#3E9558',
+    categorySalud: '#C43B26',
+    categoryInsumos: '#1D4E89',
+    categoryNaturaleza: '#3B6E4A',
+    categoryAlertas: '#E8A13C',
+    borderSubtle: '#A58B70',
+    placeholderText: '#8A8378',
+    tint: '#C43B26',
+    icon: '#8A8378',
+    tabIconDefault: '#8A8378',
+    tabIconSelected: '#C43B26',
   },
 };
 
 export const Fonts = Platform.select({
   ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
     sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
     serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
     rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
     mono: 'ui-monospace',
   },
   default: {
