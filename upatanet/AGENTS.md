@@ -95,10 +95,10 @@ La app usa **expo-router** con estructura:
 app/
 ├─ _layout.tsx              Root Stack (forzar tema claro custom)
 ├─ (tabs)/
-│  ├─ _layout.tsx           Bottom Tabs: Noticias | Mapa | Mensajes | Configuración
+│  ├─ _layout.tsx           Bottom Tabs: Noticias | Mapa | Alarma | Configuración
 │  ├─ index.tsx             Noticias (feed — fase 1: mini-esqueleto)
 │  ├─ mapa.tsx              Placeholder
-│  ├─ mensajes.tsx          Placeholder
+│  ├─ Alarma.tsx          Placeholder
 │  └─ configuracion.tsx     Placeholder
 └─ publicar.tsx             Pantalla modal de Publicación de Noticia (fase 1)
 ```
@@ -120,7 +120,7 @@ app/
 Fondo hueso con isotipo centrado (mandala étnico + perfil indígena + red de nodos azul). Variantes: limpia y con nombre "UPATANET" en serif azul oscuro.
 
 ### B. Noticias (Feed Principal)
-Feed cronológico vertical de tarjetas con título grande en color de categoría, extracto, fecha y chip de categoría. Top App Bar con isotipo, "Upatanet" y dos botones circulares (upload terracota, editar). Tabs: `{Noticias, Mapa, Mensajes, Configuración}`.
+Feed cronológico vertical de tarjetas con título grande en color de categoría, extracto, fecha y chip de categoría. Top App Bar con isotipo, "Upatanet" y dos botones circulares (upload terracota, editar). Tabs: `{Noticias, Mapa, Alarma, Configuración}`.
 
 ### C. Detalle de Noticia
 Cabecera con nombre del reportero, cuerpo en contenedor redondeado, dos botones Like/Dislike con contadores (auditoría comunitaria descentralizada).

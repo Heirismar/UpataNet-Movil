@@ -4,13 +4,14 @@
     "slug": "upatanet",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/img/icon.png",
+    "icon": "./assets/img/splash-icon.png",
+    "primaryColor": "#F2ECE0",
     "scheme": "upatanet",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/img/splash-icon.png",
+      "image": "./assets/img/splash-icon-title.png",
       "resizeMode": "contain",
-      "backgroundColor": "#F3EBE1"
+      "backgroundColor": "#F2ECE0"
     },
     "ios": {
       "supportsTablet": true,
@@ -18,15 +19,19 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/img/favicon.png",
-        "backgroundColor": "#F3EBE1"
+        "foregroundImage": "./assets/img/splash-icon.png",
+        "backgroundColor": "#F2ECE0"     
+      },   
+      "splash": {
+        "image": "./assets/img/splash-icon-title.png",
+        "backgroundColor": "#F2ECE0"       
       },
       "package": "com.upatanet.app"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/img/favicon.png"
+      "favicon": "./assets/img/splash-icon-title.png"
     },
     "plugins": ["expo-router"],
     "experiments": {

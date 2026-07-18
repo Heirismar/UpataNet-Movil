@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
-export default function MensajesScreen() {
+export default function AlarmaScreen() {
   const router = useRouter();
 
   return (
@@ -13,11 +13,11 @@ export default function MensajesScreen() {
         <TouchableOpacity onPress={() => router.push("/(tabs)")} accessibilityLabel="Volver" accessibilityRole="button" hitSlop={{ top: 8, right: 8, bottom: 8, left: 8 }}>
           <Ionicons name="arrow-back" size={24} color="#1C1C1E" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Mensajes</Text>
+        <Text style={styles.headerTitle}>Alarma</Text>
         <View style={styles.spacer} />
       </View>
       <View style={styles.content}>
-        <Text style={styles.title}>Mensajes</Text>
+        <Text style={styles.title}>Alarma</Text>
         <Text style={styles.subtitle}>Próximamente</Text>
       </View>
     </SafeAreaView>

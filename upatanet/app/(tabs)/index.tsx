@@ -126,10 +126,10 @@ export default function HomeScreen() {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.tabItem}
-          onPress={() => router.push("/(tabs)/mensajes")}
+          onPress={() => router.push("/(tabs)/alarma")}
         >
           <Ionicons name="chatbubble-outline" size={24} color={C.placeholderText} />
-          <Text style={styles.tabText}>Mensajes</Text>
+          <Text style={styles.tabText}>Alarma</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.tabItem}
