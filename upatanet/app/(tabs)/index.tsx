@@ -4,10 +4,10 @@ import {
   Text,
   StyleSheet,
   Animated,
-  SafeAreaView,
   TouchableOpacity,
   Platform,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import NewsCard from "@/components/newsCard";

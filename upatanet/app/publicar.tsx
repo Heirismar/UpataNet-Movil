@@ -4,7 +4,6 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  SafeAreaView,
   TouchableOpacity,
   ScrollView,
   KeyboardAvoidingView,
@@ -12,6 +11,7 @@ import {
   Keyboard,
   Modal,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { CATEGORIES } from "@/data/categories";

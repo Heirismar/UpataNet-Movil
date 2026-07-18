@@ -157,7 +157,7 @@ Debe configurar el transformer de SVG para archivos `.svg`. Estructura estándar
 - No depender de `useColorScheme()` para variar estilos.
 
 ### Assets SVG
-Ubicación: `upatanet/assets/images/` (referencia visual, no se bundlean como pantallas estáticas)
+Ubicación: `upatanet/assets/img/` (referencia visual, no se bundlean como pantallas estáticas)
 - `publicacion-de-noticia.svg`
 - `modal-publicar.svg`
 - `modal-salir.svg`
